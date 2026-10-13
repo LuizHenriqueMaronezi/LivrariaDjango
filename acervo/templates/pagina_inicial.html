@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+
+<head><title>Livraria Seu Augusto</title></head>
+
+<header><h1><strong>Bem-Vindo a Livraria Seu Augusto</strong></h1></header>
+
+
+<body>
+
+    <div>
+        <a href="{% url 'cadastrar_livro' %}">Cadastrar Livros</a>
+        <br>
+        <a href="{% url 'cadastrar_autor' %}">Cadastrar Autor</a>
+    </div>
+
+    <hr>
+
+    <div>
+        <p>Livros Cadastrados:</p>
+        <ul>
+            {% for livro in livros %}
+                <li>{{ livro }}
+                </li>
+            {% empty %}
+                <p>Nenhum livro cadastrado</p>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>
