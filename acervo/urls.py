@@ -6,4 +6,5 @@ urlpatterns = [
     path("cadastrar-autor/",views.cadastrar_autor,name="cadastrar_autor"),
     path("cadastrar-livro/",views.cadastrar_livro,name="cadastrar_livro"),
     path("listar-autores/",views.lista_autores,name="lista_autores"),
+    path("livro/<int:pk>", views.detalhes_livro,name="detalhes_livro")
 ]

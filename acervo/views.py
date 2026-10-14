@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Livro, Autor
 from .forms import LivroForm, AutorForm
 
@@ -55,4 +55,13 @@ def lista_autores(request):
         request,
         'lista_autores.html',
         {"autores": autores}
+    )
+
+def detalhes_livro(request, pk):
+    livro = get_object_or_404(Livro, pk=pk)
+
+    return render(
+        request,
+        'detalhes_livro.html',
+        {"livro": livro}
     )
