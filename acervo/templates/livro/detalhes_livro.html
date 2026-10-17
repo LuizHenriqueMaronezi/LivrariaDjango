@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Detalhes</title>
+    </head>
+
+    <body>
+
+        <header><h2>{{ livro.titulo }}</h2></header>
+
+
+        <div class="campo_livro">
+            <strong>Preço: </strong>
+            <span>R${{ livro.preco }}</span>
+        </div>
+
+        <div class="campo_livro">
+            <strong>Data de Publicação: </strong>
+            <span>{{ livro.data_publicacao }}</span>
+        </div>
+
+        <div class="campo_livro">
+            <strong>Autor: </strong>
+            <span>{{ livro.autor.nome }}</span>
+            <a href="{% url 'detalhes_autor' livro.autor.pk %}">Ver Autor</a>
+        </div>
+
+        <div class="campo_livro">
+            <strong>Gênero: </strong>
+            <span>{{ livro.get_genero_display }}</span>
+        </div>
+
+        <a href="{% url 'editar_livro' livro.pk %}">Editar livro</a>
+
+        <br>
+
+        <form method="POST" action="{% url 'deletar_livro' livro.pk %}" 
+        onsubmit="return confirm('Tem certeza que deseja deletar este {{livro.titulo}}?')" 
+        style="display: inline;">
+            {% csrf_token %}
+            <button type="submit">Deletar Livro</button>
+        </form>
+
+        <br>
+
+        <a href="{% url 'pagina_inicial' %}">Voltar</a>
+
+    </body>
+
+</html>

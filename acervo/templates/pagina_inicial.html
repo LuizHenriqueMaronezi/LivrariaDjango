@@ -2,34 +2,38 @@
 
 <html>
 
-<head><title>Livraria Seu Augusto</title></head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Livraria Seu Augusto</title>
+    </head>
 
-<header><h1><strong>Bem-Vindo a Livraria Seu Augusto</strong></h1></header>
+    <body>
 
+        <header><h1><strong>Bem-Vindo a Livraria Seu Augusto</strong></h1></header>
 
-<body>
+        <div>
+            <a href="{% url 'cadastrar_livro' %}">Cadastrar Livros</a>
+            <br>
+            <a href="{% url 'cadastrar_autor' %}">Cadastrar Autor</a>
+        </div>
 
-    <div>
-        <a href="{% url 'cadastrar_livro' %}">Cadastrar Livros</a>
-        <br>
-        <a href="{% url 'cadastrar_autor' %}">Cadastrar Autor</a>
-    </div>
+        <hr>
+        <a href="{% url 'lista_autores' %}">Autores Cadastrados</a>
+        <hr>
 
-    <hr>
-
-    <div>
-        <p>Livros Cadastrados:</p>
-        <ul>
-            {% for livro in livros %}
-                <li>
-                    <a href="{% url 'detalhes_livro' livro.pk %}">{{ livro.titulo }}</a>
-                    --R${{ livro.preco }}
-                </li>
-            {% empty %}
-                <p>Nenhum livro cadastrado</p>
-            {% endfor %}
-        </ul>
-    </div>
-</body>
+        <div>
+            <p>Livros Cadastrados:</p>
+            <ul>
+                {% for livro in livros %}
+                    <li>
+                        <a href="{% url 'detalhes_livro' livro.pk %}">{{ livro.titulo }}</a>
+                        :  R${{ livro.preco }}
+                    </li>
+                {% empty %}
+                    <p>Nenhum livro cadastrado</p>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
 
 </html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Detalhes</title>
+    </head>
+
+    <body>
+
+        <header><h2>{{ autor.nome }}</h2></header>
+
+        <div class="campo_livro">
+            <strong>Data de Nascimento: </strong>
+            <span>{{ autor.data_nascimento|date:"d/m/Y" }}</span>
+        </div>
+
+        <div class="campo_livro">
+            <strong>Aposentado: </strong>
+            <span>
+                {{ autor.aposentado|yesno:"Sim,Não" }}
+            </span>
+        </div>
+
+        <br>
+
+        <div class="livros_lancados">
+            <strong>Livros Cadastrados:</strong>
+            <ul>
+                {% for livro in autor.livro_set.all %}
+                    <li>
+                        {{ livro }}
+                    </li>
+                {% empty %}
+                    <p>Sem livros cadastrados</p>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <br>
+
+        <form method="POST" action="{% url 'deletar_autor' autor.pk %}" 
+        onsubmit="return confirm('Tem certeza que deseja excluir o autor {{ autor.nome }}?\n Suas obras também serão excluídas.')"
+        style="display: inline;">
+            {% csrf_token %}
+            <button>Deletar Autor</button>
+        </form>
+
+        <a href="{% url 'pagina_inicial' %}">Voltar</a>
+
+    </body>
+</html>

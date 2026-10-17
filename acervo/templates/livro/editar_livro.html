@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Editar Livro</title>
+    </head>
+
+    <body>
+
+        <header><h2>Modifique os campos que deseja:</h2></header>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <hr>
+            <button type="submit">Confirmar Alteração</button>
+
+            <br><br>
+
+            <a href="{% url 'pagina_inicial' %}">Voltar</a>
+
+        </form>
+    </body>
+</html>

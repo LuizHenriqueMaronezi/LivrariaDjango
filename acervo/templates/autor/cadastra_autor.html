@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Cadastro de Autor</title>
+    </head>
+
+    <body>
+
+        <header><h2>Cadastre um novo autor:</h2></header>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">Salvar</button>
+
+        </form>
+
+    </body>
+
+</html>

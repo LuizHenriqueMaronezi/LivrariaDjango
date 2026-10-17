@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista de Autores</title>
+    </head>
+
+    <body>
+
+        <header><h2>Autores Cadastrados:</h2></header>
+
+        <ul>
+            {% for autor in autores %}
+            <li>
+                {{ autor }} -- 
+                <a href="{% url 'detalhes_autor' autor.pk %}">Ver detalhes</a>
+            </li>
+            {% empty %}
+            <p>Sem Autores Cadastrados</p>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'pagina_inicial' %}">Voltar</a>
+    </body>
+
+</html>
